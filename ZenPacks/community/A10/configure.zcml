@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser" >
+
+
+
+    <!-- Includes: Browser Configuration -->
+    <include package=".browser"/>
+
+    <adapter factory=".info.A10ServerInfo"
+            for=".A10Server.A10Server"
+             provides=".interfaces.IA10ServerInfo"
+             />
+
+    <adapter factory=".info.A10VirtualServerInfo"
+            for=".A10VirtualServer.A10VirtualServer"
+             provides=".interfaces.IA10VirtualServerInfo"
+             />
+
+    <adapter factory=".info.A10ServiceGroupInfo"
+            for=".A10ServiceGroup.A10ServiceGroup"
+             provides=".interfaces.IA10ServiceGroupInfo"
+             />
+
+</configure>
+

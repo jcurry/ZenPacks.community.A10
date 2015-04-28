@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configure xmlns="http://namespaces.zope.org/browser">
+
+    <!-- A resource directory contains static web content. -->
+    <resourceDirectory
+        name="A10"
+        directory="resources"
+        />
+
+    <!-- Register custom JavaScript for A10Devices. -->
+    <!-- name field can be nearly anything unique 
+         If paths uses /++resource++ then following variable matches resourceDirectory name
+                and can provide a path down from there eg. /js/
+         The filename, ending in .js, does not have to match anything other than the actual file
+         The for statement says only to use this javascript viewlet for devices of object class
+             A10Device (the 2nd A10Device), defined in the file A10Device (1st A10Device)
+             that is located one directory up from here ie       ..       -->
+
+    <viewlet
+        name="js-A10"
+        paths="/++resource++A10/js/A10Device.js"
+        weight="10"
+        for="..A10Device.A10Device"
+        manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+        class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+        permission="zope2.Public"
+        />
+
+</configure>
