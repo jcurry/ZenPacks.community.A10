@@ -140,14 +140,6 @@ ZC.A10ServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 field: 'name',
                 direction: 'ASC'
             },
-            filter: function(serverList) {
-                for (i=0; i<serverList.length; i++) {
-                    if (this.componentName == serverList[i]) {
-                        this.refresh();
-                    }
-                }
-            },
-
             fields: [
                 {name: 'uid'},
                 {name: 'name'},
@@ -570,8 +562,6 @@ Zenoss.nav.appendTo('Component', [{
     setContext: function(uid) {
         /*uid = '/zport/dmd/Devices/Network/A10/devices/sc01axlb-1.tiprod.net/a10Servers';*/
         uid = uid.replace(/a10ServiceGroups\/(.)*$/, '');
-        var servers = ['sc01shareweb', 'sc01searchweb'];
-        ZC.A10ServerPanel.superclass.filter.apply(this, servers);
         ZC.A10ServerPanel.superclass.setContext.apply(this, [uid]);
     }
 }]);
