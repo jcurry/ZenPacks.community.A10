@@ -9,7 +9,7 @@ LICENSE = "GPLv2"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.community']
 PACKAGES = ['ZenPacks', 'ZenPacks.community', 'ZenPacks.community.A10']
 INSTALL_REQUIRES = []
-COMPAT_ZENOSS_VERS = ">=4.0"
+COMPAT_ZENOSS_VERS = ">=3.2.1"
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
 ################################

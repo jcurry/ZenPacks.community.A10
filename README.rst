@@ -53,7 +53,7 @@ may have both up and down in the text.  I believe this is an A10 bug).
 Requirements & Dependencies
 ===========================
 
-    * Zenoss Versions Supported: 4.x
+    * Zenoss Versions Supported: 3.2.1, 4.x
     * External Dependencies: 
     * ZenPack Dependencies:
     * Installation Notes: Restart zenoss entirely after installation
@@ -67,6 +67,7 @@ Download the appropriate package for your Zenoss version from the list
 below.
 
 * Zenoss 4.0+ `Latest Package for Python 2.7`_
+* Zenoss 3.2.1 `Latest Package for Python 2.6`_
 
 ZenPack installation
 ======================
@@ -107,3 +108,4 @@ See the screenshots directory.
 .. External References Below. Nothing Below This Line Should Be Rendered
 
 .. _Latest Package for Python 2.7: https://github.com/jcurry/ZenPacks.community.A10/blob/master/dist/ZenPacks.community.A10-1.0.2-py2.7.egg?raw=true
+.. _Latest Package for Python 2.6: https://github.com/jcurry/ZenPacks.community.A10/blob/master/dist/ZenPacks.community.A10-1.0.2-py2.6.egg?raw=true
