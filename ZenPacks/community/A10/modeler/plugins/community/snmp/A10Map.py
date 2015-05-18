@@ -36,7 +36,6 @@ class A10Map(SnmpPlugin):
                 {
                     '.1'  : 'VirtualServerStatAddress',
                     '.2'  : 'VirtualServerStatName',
-                    '.9'  : 'VirtualServerStatCurrCons',
                 }
             ),
             GetTableMap('axVirtualServerPortEntry',
@@ -125,6 +124,7 @@ class A10Map(SnmpPlugin):
                 'VirtualServerDisplayStatus': data['VirtualServerDisplayStatus'],
                 'VirtualServerDisplayStatusString': self.operatingStateLookup[data['VirtualServerDisplayStatus']],
             }
+            # snmpindex is into the axVirtualServerStat table
             for oid1, data1 in axVirtualServerStattable.items():
                 if data['VirtualServerAddress'] == data1['VirtualServerStatAddress']:
                     vsdata['snmpindex'] = oid1.strip('.')
@@ -135,15 +135,15 @@ class A10Map(SnmpPlugin):
                     portNum = data2['VirtualServerPortNum']
                     # Set the id to be <VirtualServerName>_<VirtualServerPort>
                     vsdata['id'] = vsn + '_' + str(portNum)
-                    vsdata['VirtualServerPortNum'] = portNum
-                    vsdata['VirtualServerPortType'] = data2['VirtualServerPortType']
-                    try:
-                        vsdata['VirtualServerPortTypeString'] = self.vsPortTypeLookup[data2['VirtualServerPortType']]
-                    except:
-                        vsdata['VirtualServerPortTypeString'] = 0
-                        continue
-                    vsdata['VirtualServerPortEnabled'] = data2['VirtualServerPortEnabled']
-                    vsdata['VirtualServerPortEnabledString'] = self.operatingStateLookup[data2['VirtualServerPortEnabled']]
+                    #vsdata['VirtualServerPortNum'] = portNum
+                    #vsdata['VirtualServerPortType'] = data2['VirtualServerPortType']
+                    #try:
+                    #    vsdata['VirtualServerPortTypeString'] = self.vsPortTypeLookup[data2['VirtualServerPortType']]
+                    #except:
+                    #    vsdata['VirtualServerPortTypeString'] = 0
+                    #    continue
+                    #vsdata['VirtualServerPortEnabled'] = data2['VirtualServerPortEnabled']
+                    #vsdata['VirtualServerPortEnabledString'] = self.operatingStateLookup[data2['VirtualServerPortEnabled']]
                     vsdata['VirtualServerPortServiceGroup'] = data2['VirtualServerPortServiceGroup']
                     serviceGroupList.append(data2['VirtualServerPortServiceGroup'])
             vsdata['VirtualServerServiceGroupList'] = serviceGroupList 
@@ -180,14 +180,16 @@ class A10Map(SnmpPlugin):
 	    # Now index into the axServiceGroupMemberStatEntry table to get servers and ports
 	    serverPortList = []
 	    serverList = []
+
+	    # Also set snmpindex to index into axServiceGroupStatEntry
+	    sgdata['snmpindex'] = oid.strip('.')
+
 	    for oid1, data1 in axServiceGroupMemberStattable.items():
 		if data['ServiceGroupName'] == data1['axServiceGroupMemberStatName']:
-		    sgdata['ServiceGroupServer'] = data1['axServerNameInServiceGroupMemberStat']
-		    sgdata['ServiceGroupPort'] = data1['axServerPortNumInServiceGroupMemberStat']
+		    #sgdata['ServiceGroupServer'] = data1['axServerNameInServiceGroupMemberStat']
+		    #sgdata['ServiceGroupPort'] = data1['axServerPortNumInServiceGroupMemberStat']
 		    serverPortList.append((data1['axServerNameInServiceGroupMemberStat'], str(data1['axServerPortNumInServiceGroupMemberStat'])))
                     serverList.append(data1['axServerNameInServiceGroupMemberStat'])
-		    # Also set snmpindex to index into axServiceGroupMemberStatEntry
-		    sgdata['snmpindex'] = oid1.strip('.')
 	    serverPortString = ''
 	    for sp in serverPortList:
 		serverPortString = serverPortString + ','.join(sp) + ','
@@ -200,7 +202,7 @@ class A10Map(SnmpPlugin):
             modname='ZenPacks.community.A10.A10ServiceGroup',
             objmaps=servicegroups))
 
-        # Now do Serers
+        # Now do Servers
 
         if not axServertable:
             log.warn(' No SNMP response from %s for the %s plugin  for axServertable Table' % ( device.id, self.name() ) )
@@ -222,7 +224,6 @@ class A10Map(SnmpPlugin):
 		'ServerEnabledState': data['ServerEnabledState'],
 		'ServerHealthMonitor': data['ServerHealthMonitor'],
 		'ServerMonitorState': data['ServerMonitorState'],
-		'snmpindex': oid.strip('.'),
 		}
 		#Set the snmpindex to index into the ServerStat table, not the Server table
 	    for oid1, data1 in axServerStattable.items():

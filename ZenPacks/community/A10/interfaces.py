@@ -48,7 +48,7 @@ class IA10ServiceGroupInfo(IComponentInfo):
     ServiceGroupDisplayStatus = schema.Int(title=_t(u"Service Group Status"))
     ServiceGroupDisplayStatusString = SingleLineText(title=_t(u"Service Group StatusString"))
     ServiceGroupServerList = schema.List(_t(u"Server List"))
-    ServiceGroupServer = SingleLineText(title=_t(u"Service Group Server"))
+    ServiceGroupServer = SingleLineText(title=_t(u"Service Group Servers"))
     ServiceGroupPort = schema.Int(title=_t(u"Service Group Port"))
     #a10VirtualServer = schema.Entity(_t(u"Virtual Server"))
     snmpindex = SingleLineText(title=_t(u"snmp index"))

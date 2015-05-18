@@ -141,7 +141,6 @@ ZC.A10ServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 direction: 'ASC'
             },
 
-            /*
 	    filter: function(serverList) {
                 for (i=0; i<serverList.length; i++) {
                     if (this.componentName == serverList[i]) {
@@ -149,7 +148,6 @@ ZC.A10ServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                     }
                 }
 	    },
-            */
             fields: [
                 {name: 'uid'},
                 {name: 'name'},
@@ -427,7 +425,6 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 field: 'name',
                 direction: 'ASC'
             },
-            /*
 	    filter: function(serverList) {
                 for (i=0; i<serverList.length; i++) {
                     if (this.componentName == serverList[i]) {
@@ -435,7 +432,6 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                     }
                 }
 	    },
-            */
             fields: [
                 {name: 'uid'},
                 {name: 'name'},
@@ -549,7 +545,7 @@ ZC.registerName('A10ServiceGroup', _t('Service Group'), _t('Service Groups'));
 
 Zenoss.nav.appendTo('Component', [{
     id: 'component_a10ServiceGroup',
-    text: _t('Service Groups'),
+    text: _t('Related Service groups'),
     xtype: 'A10ServiceGroupPanel',
     subComponentGridPanel: true,
     filterNav: function(navpanel) {
@@ -562,14 +558,14 @@ Zenoss.nav.appendTo('Component', [{
     setContext: function(uid) {
         uid = uid.replace(/a10VirtualServers\/(.)*$/, '');
         var serviceGroups = ['sg_ext', 'sg_int'];
-        /*ZC.A10ServerPanel.superclass.filter.apply(this, serviceGroups);*/
+        ZC.A10ServerPanel.superclass.filter.apply(this, serviceGroups);
         ZC.A10ServiceGroupPanel.superclass.setContext.apply(this, [uid]);
     }
 }]);
 
 Zenoss.nav.appendTo('Component', [{
     id: 'component_a10Server',
-    text: _t('Servers'),
+    text: _t('Related Servers'),
     xtype: 'A10ServerPanel',
     subComponentGridPanel: true,
     filterNav: function(navpanel) {
@@ -590,7 +586,7 @@ Zenoss.nav.appendTo('Component', [{
             /*servers = uid.ServiceGroupServerList;*/
             servers = ['sc01searchweb'];
         }
-        /*ZC.A10ServerPanel.superclass.filter.apply(this, servers);*/
+        ZC.A10ServerPanel.superclass.filter.apply(this, servers);
         ZC.A10ServerPanel.superclass.setContext.apply(this, [uid]);
     }
 }]);
