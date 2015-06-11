@@ -110,4 +110,4 @@ See the screenshots directory.
 .. External References Below. Nothing Below This Line Should Be Rendered
 
 .. _Latest Package for Python 2.7: https://github.com/jcurry/ZenPacks.community.A10/blob/master/dist/ZenPacks.community.A10-1.0.3-py2.7.egg?raw=true
-.. _Latest Package for Python 2.6: https://github.com/jcurry/ZenPacks.community.A10/blob/master/dist/ZenPacks.community.A10-1.0.3-py2.6.egg?raw=true
+.. _Latest Package for Python 2.6: https://github.com/jcurry/ZenPacks.community.A10/blob/Zenoss3/dist/ZenPacks.community.A10-1.0.3-py2.6.egg?raw=true
