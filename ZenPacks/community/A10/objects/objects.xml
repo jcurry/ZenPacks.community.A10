@@ -235,9 +235,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='AverageControlCpu' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -319,14 +316,8 @@ False
 <property type="boolean" id="hasSummary" mode="w" >
 True
 </property>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <tomanycont id='graphPoints'>
 <object id='MemoryTotal' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -419,9 +410,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='AverageCpu' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -672,14 +660,8 @@ False
 <property type="boolean" id="hasSummary" mode="w" >
 True
 </property>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <tomanycont id='graphPoints'>
 <object id='currentConnections' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -737,9 +719,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='BytesIn' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -826,9 +805,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='PacketsIn' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1108,14 +1084,8 @@ False
 <property type="boolean" id="hasSummary" mode="w" >
 True
 </property>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <tomanycont id='graphPoints'>
 <object id='CurrentConnections' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1173,9 +1143,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='BytesIn' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1262,9 +1229,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='PacketsIn' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1544,14 +1508,8 @@ False
 <property type="boolean" id="hasSummary" mode="w" >
 True
 </property>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <tomanycont id='graphPoints'>
 <object id='CurrentConnections' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1601,14 +1559,8 @@ False
 <property type="boolean" id="hasSummary" mode="w" >
 True
 </property>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <tomanycont id='graphPoints'>
 <object id='CurrentConnections' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1666,9 +1618,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='BytesIn' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1755,9 +1704,6 @@ True
 </property>
 <tomanycont id='graphPoints'>
 <object id='PacketsIn' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
-<property type="long" id="sequence" mode="w" >
-0
-</property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
 </property>
@@ -1820,6 +1766,22 @@ AVERAGE
 </object>
 <!-- ('', 'zport', 'dmd', 'Events', 'A10') -->
 <object id='/zport/dmd/Events/A10' module='Products.ZenEvents.EventClass' class='EventClass'>
+<property type="text" id="transform" mode="w" >
+import re
+p=re.compile(r'(The virtual server (?P&lt;comp&gt;.*) is (?P&lt;state&gt;(down|up)))')
+
+if 'getFacade' in globals() and getFacade('zep'):
+  # This is Zenoss 4
+  for attr in evt.details._map.keys():
+    if attr == 'axNotificationMsg':
+      mess = ' '.join(list(evt.details.getAll(attr)))
+      evt.summary = mess
+else:
+  # This is Zenoss 3
+  for attr in dir(evt):
+      if attr == 'axNotificationMsg':
+        evt.summary = getattr(evt, attr)
+</property>
 <property type="text" id="transform" mode="w" >
 import re
 p=re.compile(r'(The virtual server (?P&lt;comp&gt;.*) is (?P&lt;state&gt;(down|up)))')
@@ -21009,9 +20971,6 @@ deprecated
 <property type="string" id="description" mode="w" >
 The system fan1 is failed.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axFan2Failure' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21032,9 +20991,6 @@ deprecated
 <property type="string" id="description" mode="w" >
 The system fan2 is failed.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axFan3Failure' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21054,9 +21010,6 @@ deprecated
 </property>
 <property type="string" id="description" mode="w" >
 The system fan3 is failed.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axHAActive' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -21147,9 +21100,6 @@ current
 <property type="string" id="description" mode="w" >
 The hard disk usage is high.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axLowerPowerSupplyFailure' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21170,9 +21120,6 @@ deprecated
 <property type="string" id="description" mode="w" >
 The system lower power supply is failed.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axMemoryUsageHigh' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21192,9 +21139,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The memory usage is high.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axNetworkTrunkPortsThreshold' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -21239,9 +21183,6 @@ current
 <property type="string" id="description" mode="w" >
 The primary hard disk is failed.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axSecondaryHardDiskFailure' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21261,9 +21202,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The secondary hard disk is failed.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axServerConnLimit' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -21676,9 +21614,6 @@ current
 <property type="string" id="description" mode="w" >
 Notify that the agent has been restarted.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axSystemShutdown' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21698,9 +21633,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 Notify that the system is in the process of being shut down.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axSystemStart' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -21722,9 +21654,6 @@ current
 <property type="string" id="description" mode="w" >
 Notify that the system has started running.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axSystemTempHigh' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21745,9 +21674,6 @@ current
 <property type="string" id="description" mode="w" >
 The system tempature is high.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axUpperPowerSupplyFailure' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -21767,9 +21693,6 @@ deprecated
 </property>
 <property type="string" id="description" mode="w" >
 The system upper power supply is failed.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axVirtualServerPortDown' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -22271,9 +22194,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The file system is becoming the read-only.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axGslbGroupBecomeMaster' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -22847,9 +22767,6 @@ current
 <property type="string" id="description" mode="w" >
 The hard disk usage is back to normal.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axHighPrioritySyslog' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -22892,9 +22809,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The memory usage is back to normal.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axPartitionResourceUsageWarning' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -24156,9 +24070,6 @@ current
 <property type="string" id="description" mode="w" >
 The file system is becoming the read-only.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axGslbGroupBecomeMaster' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -24777,9 +24688,6 @@ current
 <property type="string" id="description" mode="w" >
 The hard disk usage is high.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axMemoryUsageHigh' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -24799,9 +24707,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The memory usage is high.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axPrimaryHardDiskFailure' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -24823,9 +24728,6 @@ current
 <property type="string" id="description" mode="w" >
 The primary hard disk is failed.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axSecondaryHardDiskFailure' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -24845,9 +24747,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The secondary hard disk is failed.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axServerConnLimit' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -25283,9 +25182,6 @@ current
 <property type="string" id="description" mode="w" >
 Notify that the agent has been restarted.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axSystemShutdown' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -25305,9 +25201,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 Notify that the system is in the process of being shut down.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axSystemShutdownForReason' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -25352,9 +25245,6 @@ current
 <property type="string" id="description" mode="w" >
 Notify that the system has started running.
 </property>
-<property type="lines" id="objects" mode="w" >
-{}
-</property>
 </object>
 <object id='axSystemTempHigh' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -25374,9 +25264,6 @@ current
 </property>
 <property type="string" id="description" mode="w" >
 The system tempature is high.
-</property>
-<property type="lines" id="objects" mode="w" >
-{}
 </property>
 </object>
 <object id='axVirtualServerPortDown' module='Products.ZenModel.MibNotification' class='MibNotification'>
