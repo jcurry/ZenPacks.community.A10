@@ -1522,6 +1522,63 @@ True
 </object>
 </tomanycont>
 <tomanycont id='graphDefs'>
+<object id='Current Connections' module='Products.ZenModel.GraphDefinition' class='GraphDefinition'>
+<property type="int" id="height" mode="w" >
+100
+</property>
+<property type="int" id="width" mode="w" >
+500
+</property>
+<property type="boolean" id="log" mode="w" >
+False
+</property>
+<property type="boolean" id="base" mode="w" >
+False
+</property>
+<property type="int" id="miny" mode="w" >
+-1
+</property>
+<property type="int" id="maxy" mode="w" >
+-1
+</property>
+<property type="boolean" id="hasSummary" mode="w" >
+True
+</property>
+<property type="long" id="sequence" mode="w" >
+0
+</property>
+<tomanycont id='graphPoints'>
+<object id='CurrentConnections' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+0
+</property>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+LINE
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+CurrentConnections_CurrentConnections
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+</tomanycont>
+</object>
 <object id='Virtual Server Current Connections' module='Products.ZenModel.GraphDefinition' class='GraphDefinition'>
 <property type="int" id="height" mode="w" >
 100
@@ -6062,7 +6119,7 @@ A table containing statistic information of the physical interfacess.
 The current state of the interface.
 up            - has link and is initialized;  
 down          - has no link and is initialized;
-disabled      - has been forced down 
+disabled      - has been forced down
 </property>
 <property type="string" id="moduleName" mode="w" >
 A10-AX-MIB
@@ -19272,7 +19329,7 @@ node
 </object>
 <object id='axVirtualServerPortAddress' module='Products.ZenModel.MibNode' class='MibNode'>
 <property id='zendoc' type='string'>
-The ip address of this virtual server. 
+The ip address of this virtual server.
 </property>
 <property type="string" id="moduleName" mode="w" >
 A10-AX-MIB
@@ -19455,7 +19512,7 @@ readonly
 </object>
 <object id='axVirtualServerPortName' module='Products.ZenModel.MibNode' class='MibNode'>
 <property id='zendoc' type='string'>
-The name of the virtual server. 
+The name of the virtual server.
 </property>
 <property type="string" id="moduleName" mode="w" >
 A10-AX-MIB
@@ -21860,6 +21917,341 @@ A virtual server has reached the configured connection rate-limits.
 <property type="string" id="language" mode="w" >
 SMIv2
 </property>
+<tomanycont id='nodes'>
+<object id='axNotificationCertificateName' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The name of the certificate.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.40
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The name of the certificate.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationConnectionTypeName' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The name of the type.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.38
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The name of the type.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationDateTime' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+Time the event is going to occuer, expired.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.41
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Time the event is going to occuer, expired.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationLicenseDisableDuration' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The license has been disabled for given seconds.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.35
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The license has been disabled for given seconds.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationLicensedModuleName' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The licensed module name.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.33
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The licensed module name.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationPartitionResourceName' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The partition resource name.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.44
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The partition resource name.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationPartitionResourceUsageLevel' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The partition resource usage level.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.45
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The partition resource usage level.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationSLBServerPortType' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The server port type.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.42
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The server port type.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationServerSelectionFailureReason' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The reason of server selection failure.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.37
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The reason of server selection failure.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationSlbObjectChange' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The type of create/delete.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.39
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The type of create/delete.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationSslServerCertiticateErrCounter' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The counter for the SSL server certificate errors.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.36
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The counter for the SSL server certificate errors.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationTacacsServerHost' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The TACACS server host.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.46
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The TACACS server host.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationTrueFalse' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The effective of the notification.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.48
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The effective of the notification.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axNotificationUpDown' module='Products.ZenModel.MibNode' class='MibNode'>
+<property id='zendoc' type='string'>
+The type of up or down.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+scalar
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.1.47
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The type of up or down.
+</property>
+<property type="string" id="access" mode="w" >
+readonly
+</property>
+</object>
+<object id='axSlbNotifications' module='Products.ZenModel.MibNode' class='MibNode'>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+node
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6
+</property>
+</object>
+</tomanycont>
 <tomanycont id='notifications'>
 <object id='axFileSystemBecomeReadOnly' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
@@ -22436,6 +22828,190 @@ The GSLB zone service is operational up.
 {'axNotificationGslbZoneServiceName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationGslbZoneName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationGslbZoneServiceProto': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
 </property>
 </object>
+<object id='axHardDiskUsageBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The hard disk usage is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.31
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The hard disk usage is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{}
+</property>
+</object>
+<object id='axHighPrioritySyslog' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The high severity issue such as hardware failure.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.41
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The high severity issue such as hardware failure.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axMemoryUsageBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The memory usage is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.32
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The memory usage is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{}
+</property>
+</object>
+<object id='axPartitionResourceUsageWarning' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The partition resource usage becomes above/below the configured limitation.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.7
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The partition resource usage becomes above/below the configured limitation.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationPartitionResourceUsageLevel': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionResourceName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axServerCreateDelete' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Slb server is added or deleted.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.3
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Slb server is added or deleted.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSlbObjectChange': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axServerDisabled' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+A SLB server is disabled.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.2.29
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+A SLB server is disabled.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationTrueFalse': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axServerPortCreateDelete' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Slb server port is added or delete.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.4
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Slb server port is added or delete.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSlbObjectChange': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServerPortType': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axServerSelectionFailure' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+A SLB server has got a server selection failure.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.2.26
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+A SLB server has got a server selection failure.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationServerSelectionFailureReason': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
 <object id='axServiceGroupDown' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
 A SLB service group is down.
@@ -22479,7 +23055,7 @@ current
 A SLB service group member is disabled, when the current connections of group members are reduced to the conn-resume.
 </property>
 <property type="lines" id="objects" mode="w" >
-{'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServiceGroupName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+{'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServiceGroupName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
 </property>
 </object>
 <object id='axServiceGroupMemberDown' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -22525,7 +23101,7 @@ current
 A SLB service group member is enabled to accept the new connection, when the current connections of group members exceed the conn-limit.
 </property>
 <property type="lines" id="objects" mode="w" >
-{'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServiceGroupName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+{'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServiceGroupName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
 </property>
 </object>
 <object id='axServiceGroupMemberUp' module='Products.ZenModel.MibNotification' class='MibNotification'>
@@ -22574,6 +23150,305 @@ A SLB service group is Up.
 {'axNotificationSLBServerPortType': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSLBServiceGroupName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
 </property>
 </object>
+<object id='axSslCertificateCreateDelete' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Ssl certification is create or delete.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.5
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Ssl certification is create or delete.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationCertificateName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSlbObjectChange': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSslCertificateExpiring' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The certification is going to be expired.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.6
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The certification is going to be expired.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationDateTime': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationCertificateName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSslServerCertiticateErr' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The SSL server certificate error is detected.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.2.25
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The SSL server certificate error is detected.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationSLBServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSslServerCertiticateErrCounter': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemConnectionResourceBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system connection is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.36
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system connection is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConnectionTypeName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemConnectionResourceHigh' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system connection is high.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.35
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system connection is high.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConnectionTypeName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemControlCpuBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The AX control CPU usage is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.28
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The AX control CPU usage is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemDataCpuBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The AX data CPU usage is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.29
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The AX data CPU usage is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemFanRecover' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system fan is recover.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.33
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system fan is recover.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationFanName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemLicenseExpired' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The module license is expired.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.24
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The module license is expired.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationLicensedModuleName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemLicenseLoadSuccessful' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system loads the license for specific module successfully.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.23
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system loads the license for specific module successfully.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationLicensedModuleName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemLicenseRequired' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system requires the valid license for specific module.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.22
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system requires the valid license for specific module.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationLicensedModuleName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemLicensedModuleDisabledForDuration' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system disables the specific licensed module for the past duration seconds.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.27
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system disables the specific licensed module for the past duration seconds.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationLicenseDisableDuration': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationLicensedModuleName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemPowerSupplyRecover' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system power supply is recover.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.34
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system power supply is recover.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationPowerSupplyName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
 <object id='axSystemShutdownForReason' module='Products.ZenModel.MibNotification' class='MibNotification'>
 <property id='zendoc' type='string'>
 The AX system is mandatorily shut down.
@@ -22595,6 +23470,190 @@ The AX system is mandatorily shut down.
 </property>
 <property type="lines" id="objects" mode="w" >
 {'axNotificationShutdownReason': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemSmpResourceBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The SMP is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.38
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The SMP is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConnectionTypeName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemSmpResourceHigh' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system SMP is high.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.37
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system SMP is high.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConnectionTypeName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axSystemTempBecomeNormal' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The system tempature is back to normal.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.30
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The system tempature is back to normal.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationCurrentUsage': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationConfiguredThreshold': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axTacacsMonitorServerUpDown' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+The AX Tacacs Monitor Server is up/down.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.1.39
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+The AX Tacacs Monitor Server is up/down.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationTacacsServerHost': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationUpDown': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axVirtualServerCreateDelete' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Slb virtual server is added or deleted.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.1
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Slb virtual server is added or deleted.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationVirtualServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSlbObjectChange': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axVirtualServerDown' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Slb virtual server is down.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.2.28
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Slb virtual server is down.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationVirtualServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axVirtualServerPortCreateDelete' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Slb virtual server port is addeded or deleted.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.6.2
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Slb virtual server port is addeded or deleted.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationVirtualServerPort': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationSlbObjectChange': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationVirtualServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationVirtualServerPortType': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
+</property>
+</object>
+<object id='axVirtualServerUp' module='Products.ZenModel.MibNotification' class='MibNotification'>
+<property id='zendoc' type='string'>
+Slb virtual server is up.
+</property>
+<property type="string" id="moduleName" mode="w" >
+A10-AX-NOTIFICATIONS
+</property>
+<property type="string" id="nodetype" mode="w" >
+notification
+</property>
+<property type="string" id="oid" mode="w" >
+1.3.6.1.4.1.22610.2.4.3.12.2.2.27
+</property>
+<property type="string" id="status" mode="w" >
+current
+</property>
+<property type="string" id="description" mode="w" >
+Slb virtual server is up.
+</property>
+<property type="lines" id="objects" mode="w" >
+{'axNotificationVirtualServer': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationPartitionName': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}, 'axNotificationMsg': {'nodetype': 'object', 'module': 'A10-AX-NOTIFICATIONS'}}
 </property>
 </object>
 <object id='axVrrpActive' module='Products.ZenModel.MibNotification' class='MibNotification'>
