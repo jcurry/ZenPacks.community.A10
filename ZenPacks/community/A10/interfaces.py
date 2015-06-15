@@ -37,6 +37,7 @@ class IA10VirtualServerInfo(IComponentInfo):
     VirtualServerPortServiceGroup = SingleLineText(title=_t(u"Service Group"))
     VirtualServerServiceGroupList = schema.List(title=_t(u"Service Group List"))
     snmpindex = SingleLineText(title=_t(u"snmp index"))
+    #name = SingleLineText(title=_t(u"name"))
     id = SingleLineText(title=_t(u"Id"))
     VirtualServerServiceGroupObjectList = schema.Entity(_t(u"Service Group Object List"))
 
@@ -52,6 +53,7 @@ class IA10ServiceGroupInfo(IComponentInfo):
     ServiceGroupPort = schema.Int(title=_t(u"Service Group Port"))
     #a10VirtualServer = schema.Entity(_t(u"Virtual Server"))
     snmpindex = SingleLineText(title=_t(u"snmp index"))
+    #name = SingleLineText(title=_t(u"name"))
     ServiceGroupServerObjectList = schema.Entity(_t(u"Servers Object List"))
 
 class IA10ServerInfo(IComponentInfo):
@@ -63,4 +65,5 @@ class IA10ServerInfo(IComponentInfo):
     #a10ServiceGroup = schema.Entity(title=_t(u"Service Group"))
     #a10VirtualServer = schema.Entity(title=_t(u"Virtual Server"))
     snmpindex = SingleLineText(title=_t(u"snmp index"))
+    #name = SingleLineText(title=_t(u"name"))
 

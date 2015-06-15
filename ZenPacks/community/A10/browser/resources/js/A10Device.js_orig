@@ -33,12 +33,8 @@ function render_link(ob) {
     }
 }
 
-/* I have no idea why the object meta_type is not populated but it does not appear to be
- * hence the 2 separate renderer definitions here which hard-code the obj.meta_type
- */
-
 Ext.apply(Zenoss.render, {
-    A10Device_A10Server_entityLinkFromGrid: function(obj, col, record) {
+    A10Device_entityLinkFromGrid: function(obj, col, record) {
         if (!obj)
             return;
 
@@ -61,50 +57,7 @@ Ext.apply(Zenoss.render, {
         }
 
         if (isLink) {
-            /*return '<a href="javascript:Ext.getCmp(\'component_card\').componentgrid.jumpToEntity(\''+obj.uid+'\', \''+obj.meta_type+'\');">'+obj.title+'</a>'; */
-            obj.meta_type = 'A10Server'
-            return '<a href="javascript:Ext.getCmp(\'component_card\').componentgrid.jumpToEntity(\''+obj.uid+'\', \''+obj.meta_type+'\');">'+obj.title+'</a>'; 
-        } else {
-            return obj.title;
-        }
-    },
-
-    checkbox: function(bool) {
-        if (bool) {
-            return '<input type="checkbox" checked="true" disabled="true">';
-        } else {
-            return '<input type="checkbox" disabled="true">';
-        }
-    }
-});
-
-Ext.apply(Zenoss.render, {
-    A10Device_A10ServiceGroup_entityLinkFromGrid: function(obj, col, record) {
-        if (!obj)
-            return;
-
-        if (typeof(obj) == 'string')
-            obj = record.data;
-
-        if (!obj.title && obj.name)
-            obj.title = obj.name;
-
-        var isLink = false;
-
-        if (this.refName == 'componentgrid') {
-            // Zenoss >= 4.2 / ExtJS4
-            if (this.subComponentGridPanel || this.componentType != obj.meta_type)
-                isLink = true;
-        } else {
-            // Zenoss < 4.2 / ExtJS3
-            if (!this.panel || this.panel.subComponentGridPanel)
-                isLink = true;
-        }
-
-        if (isLink) {
-            /*return '<a href="javascript:Ext.getCmp(\'component_card\').componentgrid.jumpToEntity(\''+obj.uid+'\', \''+obj.meta_type+'\');">'+obj.title+'</a>'; */
-            obj.meta_type = 'A10ServiceGroup'
-            return '<a href="javascript:Ext.getCmp(\'component_card\').componentgrid.jumpToEntity(\''+obj.uid+'\', \''+obj.meta_type+'\');">'+obj.title+'</a>'; 
+            return '<a href="javascript:Ext.getCmp(\'component_card\').componentgrid.jumpToEntity(\''+obj.uid+'\', \''+obj.meta_type+'\');">'+obj.title+'</a>';
         } else {
             return obj.title;
         }
@@ -125,7 +78,6 @@ ZC.A10ComponentGridPanel = Ext.extend(ZC.ComponentGridPanel, {
     subComponentGridPanel: false,
 
     jumpToEntity: function(uid, meta_type) {
-       
         var tree = Ext.getCmp('deviceDetailNav').treepanel;
         var tree_selection_model = tree.getSelectionModel();
         var components_node = tree.getRootNode().findChildBy(
@@ -210,8 +162,7 @@ ZC.A10ServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 {name: 'monitor'},
                 {name: 'monitored'},
                 {name: 'usesMonitorAttribute'},
-                {name: 'locking'},
-                {name: 'name'}
+                {name: 'locking'}
             ],
             columns: [{
                 id: 'severity',
@@ -276,11 +227,6 @@ ZC.A10ServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 dataIndex: 'locking',
                 header: _t('Locking'),
                 renderer: Zenoss.render.locking_icons
-            },{
-                id: 'name',
-                dataIndex: 'name',
-                header: _t('name'),
-                width: 60
             }]
         });
         ZC.A10ServerPanel.superclass.constructor.call(this, config);
@@ -324,8 +270,7 @@ ZC.A10VirtualServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 {name: 'monitor'},
                 {name: 'monitored'},
                 {name: 'usesMonitorAttribute'},
-                {name: 'locking'},
-                {name: 'name'}
+                {name: 'locking'}
             ],
             columns: [{
                 id: 'severity',
@@ -334,6 +279,16 @@ ZC.A10VirtualServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 renderer: Zenoss.render.severity,
                 sortable: true,
                 width: 50
+            /*
+            },{
+                id: 'id',
+                dataIndex: 'id',
+                header: _t('Server Id'),
+                renderer: Zenoss.render.A10Device_entityLinkFromGrid,
+                panel: this,
+                sortable: true,
+                width: 200
+            */
             },{
                 id: 'VirtualServerName',
                 dataIndex: 'VirtualServerName',
@@ -365,6 +320,59 @@ ZC.A10VirtualServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 header: _t('Server Status'),
                 sortable: true,
                 width: 100
+            /*
+            },{
+                id: 'VirtualServerPortNum',
+                dataIndex: 'VirtualServerPortNum',
+                header: _t('Port Num.'),
+                sortable: true,
+                width: 55
+            },{
+                id: 'VirtualServerPortTypeString',
+                dataIndex: 'VirtualServerPortTypeString',
+                header: _t('Port Type'),
+                sortable: true,
+                width: 70
+            },{
+                id: 'VirtualServerPortEnabled',
+                dataIndex: 'VirtualServerPortEnabled',
+                header: _t('Port Enabled'),
+                sortable: true,
+                renderer: function(dS) {
+                        if (dS==1) {
+                          return Zenoss.render.pingStatus('up');
+                        } else {
+                          return Zenoss.render.pingStatus('down');
+                        }
+                },
+                width: 60
+            },{
+                id: 'VirtualServerPortServiceGroup',
+                dataIndex: 'VirtualServerPortServiceGroup',
+                header: _t('Service Group'),
+                sortable: true,
+                width: 200
+            },{
+                id: 'VirtualServerServiceGroupList',
+                dataIndex: 'VirtualServerServiceGroupList',
+                header: _t('Service Group List'),
+                renderer: function(vssgs) {
+                    var returnString = '';
+                    Ext.each(vssgs, function(vssg, index) {
+                        if (index > 0) returnString += ', ';
+                        if (vssg && Ext.isObject(vssg)) {
+                            returnString += Zenoss.render.link(vssg.uid, undefined, name);
+
+                        }
+                        else if (Ext.isString(vssg)) {
+                            returnString += vssg;
+                        }
+                    });
+                    return returnString;
+                },
+                sortable: true,
+                width: 200
+            */
             },{
                 id: 'VirtualServerServiceGroupObjectList',
                 dataIndex: 'VirtualServerServiceGroupObjectList',
@@ -375,7 +383,7 @@ ZC.A10VirtualServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                         if (index > 0) returnString += ',';
                         if (vssgo && Ext.isObject(vssgo)) {
                             /*returnString += Zenoss.render.link(vssgo.uid, undefined, name);*/
-                            returnString += Zenoss.render.A10Device_A10ServiceGroup_entityLinkFromGrid(vssgo);
+                            returnString += Zenoss.render.A10Device_entityLinkFromGrid(vssgo);
                         }
                         else if (Ext.isString(vssgo)) {
                             returnString += vssgo;
@@ -397,11 +405,6 @@ ZC.A10VirtualServerPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 dataIndex: 'locking',
                 header: _t('Locking'),
                 renderer: Zenoss.render.locking_icons
-            },{
-                id: 'name',
-                dataIndex: 'name',
-                header: _t('name'),
-                width: 60
             }]
         });
         ZC.A10VirtualServerPanel.superclass.constructor.call(this, config);
@@ -424,6 +427,15 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 field: 'name',
                 direction: 'ASC'
             },
+            /*
+	    filter: function(serverList) {
+                for (i=0; i<serverList.length; i++) {
+                    if (this.componentName == serverList[i]) {
+		        this.refresh();
+                    }
+                }
+	    },
+            */
             fields: [
                 {name: 'uid'},
                 {name: 'name'},
@@ -440,8 +452,7 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 {name: 'monitor'},
                 {name: 'monitored'},
                 {name: 'usesMonitorAttribute'},
-                {name: 'locking'},
-                {name: 'name'}
+                {name: 'locking'}
             ],
             columns: [{
                 id: 'severity',
@@ -468,6 +479,26 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 header: _t('Service Group Status'),
                 sortable: true,
                 width: 120
+            /*
+            },{
+                id: 'ServiceGroupServer',
+                dataIndex: 'ServiceGroupServer',
+                header: _t('Service Group Server'),
+                sortable: true,
+                width: 200
+            },{
+                id: 'ServiceGroupPort',
+                dataIndex: 'ServiceGroupPort',
+                header: _t('Port'),
+                sortable: true,
+                width: 50
+            },{
+                id: 'ServiceGroupServerList',
+                dataIndex: 'ServiceGroupServerList',
+                header: _t('Server List'),
+                sortable: true,
+                width: 200
+            */
             },{
                 id: 'ServiceGroupServerObjectList',
                 dataIndex: 'ServiceGroupServerObjectList',
@@ -478,7 +509,7 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                         if (index > 0) returnString += ',';
                         if (sgso && Ext.isObject(sgso)) {
                             /*returnString += Zenoss.render.link(sgso.uid, undefined, name);*/
-                            returnString += Zenoss.render.A10Device_A10Server_entityLinkFromGrid(sgso);
+                            returnString += Zenoss.render.A10Device_entityLinkFromGrid(sgso);
 
                         }
                         else if (Ext.isString(sgso)) {
@@ -501,11 +532,6 @@ ZC.A10ServiceGroupPanel = Ext.extend(ZC.A10ComponentGridPanel, {
                 dataIndex: 'locking',
                 header: _t('Locking'),
                 renderer: Zenoss.render.locking_icons
-            },{
-                id: 'name',
-                dataIndex: 'name',
-                header: _t('name'),
-                width: 60
             }]
         });
         ZC.A10ServiceGroupPanel.superclass.constructor.call(this, config);
@@ -553,11 +579,18 @@ Zenoss.nav.appendTo('Component', [{
         }
     },
     setContext: function(uid) {
+        /*uid = '/zport/dmd/Devices/Network/A10/devices/sc01axlb-1.tiprod.net/a10Servers';*/
         uid = uid.replace(/a10ServiceGroups\/(.)*$/, '');
+        /*uid = uid += '/a10SgServers';*/
+        /*uid = '/zport/dmd/Devices/Network/A10/devices/sc01axlb-1.tiprod.net/a10ServiceGroups/Analytics_80/a10SgServers';*/
+        /*var servers = ['sc01shareweb', 'sc01searchweb'];*/
+        /*var servers = ['graph4twem']*/
         var servers = []
         if (Ext.isObject(uid)) {
+            /*servers = uid.ServiceGroupServerList;*/
             servers = ['sc01searchweb'];
         }
+        /*ZC.A10ServerPanel.superclass.filter.apply(this, servers);*/
         ZC.A10ServerPanel.superclass.setContext.apply(this, [uid]);
     }
 }]);

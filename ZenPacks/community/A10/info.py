@@ -37,6 +37,7 @@ class A10VirtualServerInfo(ComponentInfo):
     VirtualServerPortServiceGroup = ProxyProperty("VirtualServerPortServiceGroup")
     VirtualServerServiceGroupList = ProxyProperty("VirtualServerServiceGroupList")
     snmpindex = ProxyProperty("snmpindex")
+    name = ProxyProperty("name")
     id = ProxyProperty("id")
 
     @property
@@ -63,6 +64,7 @@ class A10ServiceGroupInfo(ComponentInfo):
     ServiceGroupPort = ProxyProperty("ServiceGroupPort")
     #a10VirtualServer_name = ProxyProperty("a10VirtualServer_name")
     snmpindex = ProxyProperty("snmpindex")
+    name = ProxyProperty("name")
 
     @property
     @info
@@ -87,4 +89,6 @@ class A10ServerInfo(ComponentInfo):
     #a10ServiceGroup_name = ProxyProperty("a10ServiceGroup_name")
     #a10VirtualServer_name = ProxyProperty("a10VirtualServer_name")
     snmpindex = ProxyProperty("snmpindex")
+    name = ProxyProperty("name")
+
 

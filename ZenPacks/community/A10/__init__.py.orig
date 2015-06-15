@@ -45,12 +45,3 @@
 #             pass
 #
 #         ZenPackBase.remove(self, dmd, leaveObjects=leaveObjects)
-from Products.ZenEvents.EventManagerBase import EventManagerBase
-from Products.ZenModel.Device import Device
-from Products.ZenModel.ZenPack import ZenPack as ZenPackBase
-
-# We need to filter A10 components by id instead of name.
-EventManagerBase.ComponentIdWhere = (
-     "\"(device = '%s' and component = '%s')\""
-     " % (me.device().getDmdKey(), me.id)")
-

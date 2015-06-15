@@ -17,6 +17,9 @@ ZenPacks.community.A10.A10Device
 <property visible="True" type="lines" id="zDeviceTemplates" >
 ['Device', 'A10MemCpu']
 </property>
+<property visible="True" type="string" id="zSnmpVer" >
+v2c
+</property>
 <tomanycont id='rrdTemplates'>
 <object id='A10MemCpu' module='Products.ZenModel.RRDTemplate' class='RRDTemplate'>
 <property type="string" id="targetPythonClass" mode="w" >

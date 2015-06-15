@@ -3,9 +3,9 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.community.A10"
-VERSION = "1.0.3"
+VERSION = "1.0.4"
 AUTHOR = "Jane Curry - jane.curry@skills-1st.co.uk"
-LICENSE = "GPLv2"
+LICENSE = ""
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.community']
 PACKAGES = ['ZenPacks', 'ZenPacks.community', 'ZenPacks.community.A10']
 INSTALL_REQUIRES = []
