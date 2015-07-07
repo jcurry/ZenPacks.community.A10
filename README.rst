@@ -110,6 +110,13 @@ Screenshots
 See the screenshots directory.
 
 
+Acknowledgements
+================
+
+This ZenPack has been developed under contract to TuneIn Inc who have generously open-sourced
+it to the community.
+
+
 .. External References Below. Nothing Below This Line Should Be Rendered
 
 .. _Latest Package for Python 2.7: https://github.com/jcurry/ZenPacks.community.A10/blob/master/dist/ZenPacks.community.A10-1.0.3-py2.7.egg?raw=true
